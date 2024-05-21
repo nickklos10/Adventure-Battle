@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from game import Game
 from randomNum import Random
@@ -13,6 +13,10 @@ game = None
 
 if len(sys.argv) > 1:
     rand.setSeed(int(sys.argv[1]))
+
+@app.route('/')
+def serve_game():
+    return send_from_directory('static', 'game.html')
 
 @app.route('/start_game', methods=['POST'])
 def start_game():
@@ -58,3 +62,4 @@ def test():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
