@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Game</title>
+    <style>
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(10, 30px);
+            grid-template-rows: repeat(10, 30px);
+            gap: 1px;
+        }
+        .cell {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Online Game</h1>
+    <div id="game-board"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const gameBoard = document.getElementById('game-board');
+
+            async function startGame() {
+                try {
+                    const response = await fetch('/start_game', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ width: 10, height: 10, num_players: 2 })
+                    });
+                    const data = await response.json();
+                    console.log(data);
+                } catch (error) {
+                    console.error('Error starting game:', error);
+                }
+            }
+
+            async function getGameState() {
+                try {
+                    const response = await fetch('/game_state');
+                    const data = await response.json();
+                    console.log(data);
+                    renderGameBoard(data);
+                } catch (error) {
+                    console.error('Error getting game state:', error);
+                }
+            }
+
+            function renderGameBoard(data) {
+                const { players, treasures, weapons } = data;
+                gameBoard.innerHTML = '';
+                for (let y = 0; y < 10; y++) {
+                    for (let x = 0; x < 10; x++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'cell';
+                        cell.textContent = '.';
+                        players.forEach(player => {
+                            if (player.position[0] === x && player.position[1] === y) {
+                                cell.textContent = player.id;
+                                cell.style.backgroundColor = '#87CEEB';
+                            }
+                        });
+                        treasures.forEach(treasure => {
+                            if (treasure.position[0] === x && treasure.position[1] === y) {
+                                cell.textContent = treasure.symbol;
+                                cell.style.backgroundColor = '#FFD700';
+                            }
+                        });
+                        weapons.forEach(weapon => {
+                            if (weapon.position[0] === x && weapon.position[1] === y) {
+                                cell.textContent = weapon.symbol;
+                                cell.style.backgroundColor = '#FF4500';
+                            }
+                        });
+                        gameBoard.appendChild(cell);
+                    }
+                }
+            }
+
+            startGame();
+            setInterval(getGameState, 1000);
+        });
+    </script>
+</body>
+</html>

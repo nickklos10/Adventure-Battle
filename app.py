@@ -1,28 +1,37 @@
 from flask import Flask, request, jsonify, send_from_directory
-import os
+from flask_cors import CORS
 from game import Game
-from treasure import Treasure
-from player import Player
 from randomNum import Random
+import sys
 
 app = Flask(__name__)
+CORS(app)
+
+# Initialize rand and game variables
 rand = Random()
 game = None
+
+if len(sys.argv) > 1:
+    rand.setSeed(int(sys.argv[1]))
+
+@app.route('/')
+def serve_game():
+    return send_from_directory('static', 'game.html')
 
 @app.route('/start_game', methods=['POST'])
 def start_game():
     global game
-    data = request.json
+    data = request.get_json()
     width = data['width']
     height = data['height']
     num_players = data['num_players']
-    game = Game(width, height, num_players)
-    return jsonify({"message": "Game started"}), 200
+    game = Game(width, height, num_players, rand)
+    return jsonify({"message": "Game started", "width": width, "height": height, "num_players": num_players})
 
 @app.route('/move', methods=['POST'])
 def move():
     global game
-    data = request.json
+    data = request.get_json()
     player_id = data['player_id']
     direction = data['direction']
     distance = data['distance']
@@ -33,7 +42,7 @@ def move():
 @app.route('/rest', methods=['POST'])
 def rest():
     global game
-    data = request.json
+    data = request.get_json()
     player_id = data['player_id']
     player = game.listOfPlayers[player_id - 1]
     player.energy += 4.0
@@ -51,13 +60,6 @@ def game_state():
 def test():
     return jsonify({"message": "Test endpoint working"}), 200
 
-@app.route('/')
-def index():
-    return send_from_directory('static', 'index.html')
-
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
-
-
+    app.run(debug=True)
 
