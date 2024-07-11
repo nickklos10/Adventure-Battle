@@ -1,0 +1,412 @@
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
+
+:root {
+  --gradient-color: linear-gradient(
+    90deg,
+    hsl(48, 100%, 50%) 0%,
+    hsl(28, 100%, 54%, 100%)
+  );
+  --black-color: hsl(225, 15%, 6%);
+  --reflection-color: hsla(48, 30%, 95%, 0.3);
+  --body-color: hsl(48, 100%, 98%);
+  --body-font: "Montserrat", sans-serif;
+  --normal-font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "MedievalSharp", cursive;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background */
+
+/* Background */
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 0.6, 1),
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.box img {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-color: transparent;
+}
+
+/* Childs */
+
+.bg {
+  top: 12%;
+  left: 42%;
+  animation: animate 10s linear infinite;
+}
+
+.bomb {
+  top: 70%;
+  left: 50%;
+  animation: animate 7s linear infinite;
+}
+
+.sword {
+  top: 17%;
+  left: 6%;
+  animation: animate 9s linear infinite;
+}
+
+.slash {
+  top: 20%;
+  left: 60%;
+  animation: animate 10s linear infinite;
+}
+
+.treasure {
+  top: 67%;
+  left: 10%;
+  animation: animate 6s linear infinite;
+}
+
+.gold {
+  top: 80%;
+  left: 70%;
+  animation: animate 12s linear infinite;
+}
+
+.gun {
+  top: 60%;
+  left: 80%;
+  animation: animate 15s linear infinite;
+}
+
+.emerald {
+  top: 32%;
+  left: 25%;
+  animation: animate 16s linear infinite;
+}
+
+.grenade {
+  top: 90%;
+  left: 25%;
+  animation: animate 9s linear infinite;
+}
+
+.platinum {
+  top: 20%;
+  left: 80%;
+  animation: animate 5s linear infinite;
+}
+
+/*  Key frames  */
+
+@keyframes animate {
+  0% {
+    transform: scale(0) translateY(0) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3) translateY(-90px) rotate(480deg);
+    opacity: 0;
+  }
+}
+
+/* ------------------------------- */
+/* Action Buttons */
+/* ------------------------------- */
+
+.container {
+  height: 100vh;
+  margin-inline: 1.5rem;
+  display: grid;
+  place-items: center;
+  margin-right: 180px;
+}
+
+.container2 {
+  height: 100vh;
+  margin-inline: 1.5rem;
+  display: grid;
+  place-items: center;
+}
+
+/*Buttons*/
+
+.button {
+  position: absolute;
+  transition: transform 0.4s;
+}
+
+.button2 {
+  position: absolute;
+  transition: transform 0.4s;
+}
+
+/* Button Content */
+
+.button__content {
+  position: relative;
+  background: var(--gradient-color);
+  padding: 1.1rem 2rem;
+  border-radius: 4rem;
+  border: 3px solid var(--black-color);
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  overflow: hidden;
+}
+
+.button__content2 {
+  position: relative;
+  background: var(--gradient-color);
+  padding: 1.1rem 2rem;
+  border-radius: 4rem;
+  border: 3px solid var(--black-color);
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  overflow: hidden;
+}
+
+/*  Button Text  */
+
+.button__text {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.button__text2 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/*   Button Reflection  */
+
+.button__reflection-1,
+.button__reflection-2 {
+  width: 8px;
+  height: 120px;
+  background-color: var(--reflection-color);
+  rotate: 30deg;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: -180%;
+  margin: auto;
+  transition: left 0.6s cubic-bezier(0.2, 0.5, 0.2, 1.2);
+}
+
+.button__reflection-12,
+.button__reflection-22 {
+  width: 8px;
+  height: 120px;
+  background-color: var(--reflection-color);
+  rotate: 30deg;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: -180%;
+  margin: auto;
+  transition: left 0.6s cubic-bezier(0.2, 0.5, 0.2, 1.2);
+}
+
+.button__reflection-1::after {
+  content: "";
+  width: 26px;
+  height: 100%;
+  background-color: var(--reflection-color);
+  position: absolute;
+  top: -1rem;
+  left: 1.25rem;
+}
+
+.button__reflection-2::after {
+  content: "";
+  width: 20px;
+  height: 100%;
+  background-color: var(--reflection-color);
+  position: absolute;
+  top: -1rem;
+  left: 0.8rem;
+}
+
+.button__reflection-12::after {
+  content: "";
+  width: 26px;
+  height: 100%;
+  background-color: var(--reflection-color);
+  position: absolute;
+  top: -1rem;
+  left: 1.25rem;
+}
+
+.button__reflection-22::after {
+  content: "";
+  width: 40px;
+  height: 100%;
+  background-color: var(--reflection-color);
+  position: absolute;
+  top: -1rem;
+  left: 0.8rem;
+}
+
+/* Images */
+
+.button img {
+  position: absolute;
+  /* opacity: 0; */
+  pointer-events: none;
+  transition: transform 0.5s, opacity 0.5s;
+  z-index: 11;
+}
+
+.button2 img {
+  position: absolute;
+  /* opacity: 0; */
+  pointer-events: none;
+  transition: transform 0.5s, opacity 0.5s;
+  z-index: 11;
+}
+
+/* Ind Images*/
+
+.gun-1 {
+  width: 465px;
+  top: -230px;
+  left: -220px;
+  transform: rotate(22deg) scale(0.1);
+}
+
+.gun-2 {
+  width: 465px;
+  top: -170px;
+  left: -130px;
+  transform: rotate(22deg) scale(0.1);
+}
+
+.grenade-1 {
+  width: 460px;
+  top: -230px;
+  left: -220px;
+  transform: rotate(22deg) scale(0.1);
+}
+
+.grenade-2 {
+  width: 460px;
+  top: -170px;
+  left: -105px;
+  transform: rotate(22deg) scale(0.1);
+}
+
+/* Button Shadow */
+
+.button__shadow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: hsl(28, 100%, 54%, 100%);
+  padding: 1.1rem 2rem;
+  border-radius: 4rem;
+  border: 3px solid var(--black-color);
+  z-index: -1;
+  transition: transform 0.3s;
+}
+
+.button__shadow2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: hsl(28, 100%, 54%, 100%);
+  padding: 1.1rem 2rem;
+  border-radius: 4rem;
+  border: 3px solid var(--black-color);
+  z-index: -1;
+  transition: transform 0.3s;
+}
+
+/* Hover */
+
+.button:hover .button__shadow {
+  transform: translate(-0.5rem, 0.5rem);
+}
+
+.button2:hover .button__shadow2 {
+  transform: translate(-0.5rem, 0.5rem);
+}
+
+.button:hover .button__reflection-1 {
+  left: 120%;
+}
+
+.button:hover .button__reflection-2 {
+  left: -70%;
+}
+
+.button2:hover .button__reflection-12 {
+  left: 120%;
+}
+
+.button2:hover .button__reflection-22 {
+  left: -70%;
+}
+
+.button:hover {
+  transform: rotate(-4deg) scale(1.1);
+}
+
+.button:hover img {
+  opacity: 1;
+}
+
+.button2:hover {
+  transform: rotate(-4deg) scale(1.1);
+}
+
+.button2:hover img {
+  opacity: 1;
+}
+
+.button:hover .gun-1 {
+  transform: scale(0.13);
+  transition-delay: 0.1s;
+}
+.button:hover .gun-2 {
+  transform: scale(0.13);
+  transition-delay: 0.1s;
+}
+.button2:hover .grenade-1 {
+  transform: scale(0.13);
+  transition-delay: 0.1s;
+}
+.button2:hover .grenade-2 {
+  transform: scale(0.13);
+  transition-delay: 0.1s;
+}

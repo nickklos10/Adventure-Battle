@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adventure Battle</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: url("{{ url_for('static', filename='images/background.jpg') }}")
+          no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #fff;
+        text-align: center;
+        flex-direction: column;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.18);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .logo {
+        width: 60%;
+        max-width: 800px;
+        height: auto;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+      .start-button {
+        width: 150px;
+        height: 150px;
+        background: url("{{ url_for('static', filename='images/start_button.png') }}")
+          no-repeat center center;
+        background-size: cover;
+        border: none;
+        cursor: pointer;
+        animation: fadeIn 2s ease-in-out 1.5s forwards;
+        opacity: 0;
+        margin-top: 20px;
+        transition: transform 0.5s ease; /* Smooth transition */
+      }
+      .start-button:hover {
+        transform: scale(1.1); /* Slightly bigger on hover */
+      }
+      .start-button:active {
+        transform: scale(0.95); /* Slightly smaller when clicked */
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay">
+      <div class="container">
+        <img
+          src="{{ url_for('static', filename='images/logo22.png') }}"
+          alt="Adventure Battle"
+          class="logo"
+        />
+        <button class="start-button" onclick="startGame()"></button>
+      </div>
+    </div>
+    <script>
+      function startGame() {
+        window.location.href = "/instructions";
+      }
+    </script>
+  </body>
+</html>

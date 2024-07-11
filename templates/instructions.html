@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Instructions</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    />
+    <link rel="stylesheet" href="static/css/style_ins.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="card" id="card-1">
+      <input type="checkbox" class="open-card" id="open-card-1" checked />
+      <label class="open-card-label" for="open-card-1"></label>
+      <input type="checkbox" class="card-toggle" id="card-toggle-1" />
+      <label class="card-toggle-label" for="card-toggle-1"></label>
+      <div class="card-image"></div>
+      <div class="card-header">
+        <h2>Game<br />Overview</h2>
+      </div>
+      <div class="card-content left-content">
+        <h3>Be in control of the game!!!</h3>
+        <p>
+          Players move around the game board collecting treasures worth points.
+        </p>
+        <p>
+          You will have to choose the dimensions of the board and how many
+          players will play.
+        </p>
+        <p>
+          Players take turns to move, rest, or attack and each player starts
+          with a set amount of energy and 0 points.
+        </p>
+      </div>
+      <div class="card-content right-content">
+        <p>
+          Players use energy to move around the board, collect treasures, and
+          attack other players.
+        </p>
+        <p>
+          Energy is consumed when a player moves. The amount of energy used
+          depends on the distance moved.
+        </p>
+        <p>Players can rest to regain energy.</p>
+        <p>
+          Players if they collect weapons, can decide to attack other players.
+        </p>
+      </div>
+    </div>
+    <div class="card" id="card-2">
+      <input type="checkbox" class="open-card" id="open-card-2" checked />
+      <label class="open-card-label" for="open-card-2"></label>
+      <input type="checkbox" class="card-toggle" id="card-toggle-2" />
+      <label class="card-toggle-label" for="card-toggle-2"></label>
+      <div class="card-image"></div>
+      <div class="card-header">
+        <h2>Weapons<br />& Treasures</h2>
+      </div>
+      <div class="card-content left-content">
+        <h3>Master the Game!!!</h3>
+        <p>
+          The game ends when all treasures are collected or only one player
+          remains and the player with the most points wins the game. If only one
+          player is left, they automatically win regardless of points.
+        </p>
+        <p>
+          Players can be eliminated by being attacked or by another player
+          moving onto their cell. When attacking, a player uses a collected
+          weapon. The weapon is consumed after use.
+        </p>
+      </div>
+      <div class="card-content right-content">
+        <h3>Treasures:</h3>
+        <p>
+          Silver: 20 points <br />
+          <br />
+          Gold: 25 points <br /><br />
+          Emerald: 35 points <br /><br />
+          Diamond: 40 points <br /><br />
+          Platinum: 50 points <br />
+        </p>
+        <h3>Weapons:</h3>
+        <p>
+          Gun: 5 strike units <br /><br />
+          Grenade: 3 strike untis <br />
+        </p>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="card" id="card-3">
+      <input type="checkbox" class="open-card" id="open-card-3" checked />
+      <label class="open-card-label" for="open-card-3"></label>
+      <input type="checkbox" class="card-toggle3" id="card-toggle-3" />
+      <label class="card-toggle-label3" for="card-toggle-3"></label>
+      <div class="card-image3"></div>
+    </div>
+    <script src="static/js/instructions.js"></script>
+  </body>
+</html>

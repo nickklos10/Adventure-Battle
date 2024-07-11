@@ -32,8 +32,6 @@ class Player :
         if direction == "r":
             if self.energy * 2 < distanceToMove:
               distanceToMove = self.energy * 2
-              
-                
             self.x = self.x + distanceToMove
             self.energy -= 0.5 * distanceToMove
         elif direction == "l":

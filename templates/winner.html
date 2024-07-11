@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Winner</title>
+    <link href="static/css/style_winner.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!-- Background -->
+    <div class="wrapper">
+      <div class="box">
+        <img src="static/images/form/icons/board-game.png" alt="" class="bg" />
+        <img src="static/images/form/icons/bomb.png" alt="" class="bomb" />
+        <img src="static/images/form/icons/sword.png" alt="" class="sword" />
+        <img src="static/images/form/icons/slash.png" alt="" class="slash" />
+        <img
+          src="static/images/form/icons/treasure.png"
+          alt=""
+          class="treasure"
+        />
+        <img
+          src="static/images/form/icons_board/gold.png"
+          alt=""
+          class="gold"
+        />
+        <img src="static/images/form/icons_board/gun.png" alt="" class="gun" />
+        <img
+          src="static/images/form/icons_board/emerald.png"
+          alt=""
+          class="emerald"
+        />
+        <img
+          src="static/images/form/icons_board/grenade.png"
+          alt=""
+          class="grenade"
+        />
+        <img
+          src="static/images/form/icons_board/platinum.png"
+          alt=""
+          class="platinum"
+        />
+      </div>
+    </div>
+    <div id="winnerMessage" class="winner-message"></div>
+    <!-- Restart button -->
+    <div class="container">
+      <a href="/form" class="button start-button">
+        <div class="button__content">
+          <span class="button__text">Play Again</span>
+          <i class="ri-play-fill button__icon"></i>
+          <div class="button__reflection-1"></div>
+          <div class="button__reflection-2"></div>
+        </div>
+        <img
+          src="static/images/form/icons-action/play-again.png"
+          alt=""
+          class="button__random-1"
+        />
+        <img
+          src="static/images/form/icons-action/play-again.png"
+          alt=""
+          class="button__random-2"
+        />
+
+        <div class="button__shadow"></div>
+      </a>
+    </div>
+
+    <!-- End of restart button -->
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="static/js/winner.js"></script>
+  </body>
+</html>

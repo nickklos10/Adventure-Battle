@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Move</title>
+    <link
+      href="/Users/nicholas_klos/Desktop/Game project bu/static/css/style4.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="box">
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons/board-game.png"
+          alt=""
+          class="bg"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons/bomb.png"
+          alt=""
+          class="bomb"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons/sword.png"
+          alt=""
+          class="sword"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons/slash.png"
+          alt=""
+          class="slash"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons/treasure.png"
+          alt=""
+          class="treasure"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons_board/gold.png"
+          alt=""
+          class="gold"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons_board/gun.png"
+          alt=""
+          class="gun"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons_board/emerald.png"
+          alt=""
+          class="emerald"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons_board/grenade.png"
+          alt=""
+          class="grenade"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons_board/platinum.png"
+          alt=""
+          class="platinum"
+        />
+      </div>
+    </div>
+    <div class="container4">
+      <a
+        href="#"
+        class="button4 start-button"
+        onclick="movePlayer(${playerId}, 'r')"
+      >
+        <div class="button__content4">
+          <span class="button__text4">Right</span>
+
+          <div class="button__reflection-14"></div>
+          <div class="button__reflection-24"></div>
+        </div>
+
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/right-arrow.png"
+          alt=""
+          class="right-1"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/right-arrow.png"
+          alt=""
+          class="right-2"
+        />
+
+        <div class="button__shadow4"></div>
+      </a>
+    </div>
+
+    <div class="container5">
+      <a
+        href="#"
+        class="button5 start-button"
+        onclick="movePlayer(${playerId}, 'l')"
+      >
+        <div class="button__content5">
+          <span class="button__text5">Left</span>
+
+          <div class="button__reflection-15"></div>
+          <div class="button__reflection-25"></div>
+        </div>
+
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/turn-left.png"
+          alt=""
+          class="left-1"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/turn-left.png"
+          alt=""
+          class="left-2"
+        />
+
+        <div class="button__shadow5"></div>
+      </a>
+    </div>
+
+    <div class="container6">
+      <a
+        href="#"
+        class="button6 start-button"
+        onclick="movePlayer(${playerId}, 'u')"
+      >
+        <div class="button__content6">
+          <span class="button__text6">Up</span>
+
+          <div class="button__reflection-16"></div>
+          <div class="button__reflection-26"></div>
+        </div>
+
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/arrow-up.png"
+          alt=""
+          class="up-1"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/arrow-up.png"
+          alt=""
+          class="up-2"
+        />
+
+        <div class="button__shadow6"></div>
+      </a>
+    </div>
+
+    <div class="container7">
+      <a
+        href="#"
+        class="button7 start-button"
+        onclick="movePlayer(${playerId}, 'd')"
+      >
+        <div class="button__content7">
+          <span class="button__text7">Down</span>
+
+          <div class="button__reflection-17"></div>
+          <div class="button__reflection-27"></div>
+        </div>
+
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/down-arrow.png"
+          alt=""
+          class="down-1"
+        />
+        <img
+          src="/Users/nicholas_klos/Desktop/Game project bu/static/images/form/icons-action/down-arrow.png"
+          alt=""
+          class="down-2"
+        />
+
+        <div class="button__shadow7"></div>
+      </a>
+    </div>
+
+    <script src="static/js/game_board.js"></script>
+  </body>
+</html>

@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "MedievalSharp", cursive;
+}
+
+/* Background */
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, #800000, #dc143c 35%, #f5deb3 100%);
+}
+
+.box img {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-color: transparent;
+}
+
+/* Childs */
+
+.bg {
+  top: 12%;
+  left: 42%;
+  animation: animate 10s linear infinite;
+}
+
+.bomb {
+  top: 70%;
+  left: 50%;
+  animation: animate 7s linear infinite;
+}
+
+.sword {
+  top: 17%;
+  left: 6%;
+  animation: animate 9s linear infinite;
+}
+
+.slash {
+  top: 20%;
+  left: 60%;
+  animation: animate 10s linear infinite;
+}
+
+.treasure {
+  top: 67%;
+  left: 10%;
+  animation: animate 6s linear infinite;
+}
+
+.gold {
+  top: 80%;
+  left: 70%;
+  animation: animate 12s linear infinite;
+}
+
+.gun {
+  top: 60%;
+  left: 80%;
+  animation: animate 15s linear infinite;
+}
+
+.emerald {
+  top: 32%;
+  left: 25%;
+  animation: animate 16s linear infinite;
+}
+
+.grenade {
+  top: 90%;
+  left: 25%;
+  animation: animate 9s linear infinite;
+}
+
+.platinum {
+  top: 20%;
+  left: 80%;
+  animation: animate 5s linear infinite;
+}
+
+/*  Key frames  */
+
+@keyframes animate {
+  0% {
+    transform: scale(0) translateY(0) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3) translateY(-90px) rotate(480deg);
+    opacity: 0;
+  }
+}
+
+/* Text */
+
+.winner-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "MedievalSharp", cursive;
+  font-size: 3em;
+  color: hsl(28, 100%, 55%, 100%);
+  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
+    3px 3px 0 #000;
+}
+
+/* Restart button */
+
+:root {
+  --gradient-color: linear-gradient(
+    90deg,
+    hsl(48, 100%, 50%) 0%,
+    hsl(28, 100%, 54%, 100%)
+  );
+  --black-color: hsl(225, 15%, 6%);
+  --reflection-color: hsla(48, 30%, 95%, 0.3);
+  --body-color: hsl(48, 100%, 98%);
+  --body-front: "Montserrat", sans-serif;
+  --normal-font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  height: 10vh;
+  margin-inline: 1.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.button {
+  top: 650px;
+  position: absolute;
+  transition: transform 0.4s;
+}
+
+.button__content {
+  position: relative;
+  background: var(--gradient-color);
+  padding: 1.25rem 1.5rem;
+  border-radius: 4rem;
+  border: 3px solid var(--black-color);
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  overflow: hidden;
+}
+
+.button__text {
+  font-weight: bold;
+  font-size: 1.2em;
+  z-index: 2;
+}
+
+/* Checkpoint*/
+
+.button__reflection-1,
+.button__reflection-2 {
+  width: 8px;
+  height: 120px;
+  background-color: var(--reflection-color);
+  rotate: 30deg;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: -180%;
+  margin: auto;
+  transition: left 0.6s cubic-bezier(0.2, 0.5, 0.2, 1.2);
+}
+
+.button__reflection-1::after {
+  content: "";
+  width: 26px;
+  height: 100%;
+  background-color: var(--reflection-color);
+  position: absolute;
+  top: -1rem;
+  left: 1.25rem;
+}
+
+.button__reflection-2::after {
+  content: "";
+  width: 40px;
+  height: 100%;
+  background-color: var(--reflection-color);
+  position: absolute;
+  top: -1rem;
+  left: 0.8rem;
+}
+
+/* Images */
+
+.button img {
+  position: absolute;
+  /* opacity: 0; */
+  pointer-events: none;
+  transition: transform 0.5s, opacity 0.5s;
+  z-index: 11;
+}
+
+.button__random-1 {
+  width: 500px;
+  top: -250px;
+  left: -245px;
+  transform: rotate(-90deg) scale(0.1);
+}
+
+.button__random-2 {
+  width: 500px;
+  top: -200px;
+  left: -100px;
+  transform: rotate(-90deg) scale(0.1);
+}
+
+.button__shadow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--black-color);
+  padding: 1.25rem 3rem;
+  border-radius: 4rem;
+  border: 3px solid var(--black-color);
+  z-index: -1;
+  transition: transform 0.3s;
+}
+
+.button:hover .button__shadow {
+  transform: translate(-0.5rem, 0.5rem);
+}
+
+.button:hover .button__shadow {
+  transform: translate(-0.5rem, 0.5rem);
+}
+
+.button:hover .button__reflection-1 {
+  left: 120%;
+}
+
+.button:hover .button__reflection-2 {
+  left: -70%;
+}
+
+.button:hover {
+  transform: rotate(-4deg) scale(1.1);
+}
+
+.button:hover img {
+  opacity: 1;
+}
+
+.button:hover .button__random-1 {
+  transform: scale(0.13);
+  transition-delay: 0.1s;
+}
+
+.button:hover .button__random-2 {
+  transform: scale(0.13);
+  transition-delay: 0.1s;
+}

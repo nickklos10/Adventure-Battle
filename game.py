@@ -12,22 +12,66 @@ class Game:
         self.listOfPlayers = []
         self.listOfTreasures = []
         self.listOfWeapons = []
+        self.currentPlayerNum = 0  # Initialize the current player index
 
         number = 0
         for p in range(numberofplayers):
             number += 1
-            w = self.rand.randrange(gameBoardWidth)
-            h = self.rand.randrange(gameBoardHeight)
-            self.listOfPlayers.append(Player(w, h, number))
+            while True:
+                w = self.rand.randrange(gameBoardWidth)
+                h = self.rand.randrange(gameBoardHeight)
+                if self.is_position_empty(w, h):
+                    self.listOfPlayers.append(Player(w, h, number))
+                    break
 
-        self.listOfTreasures.append(Treasure("silver", "S", 20, self.rand.randrange(gameBoardWidth), self.rand.randrange(gameBoardHeight)))
-        self.listOfTreasures.append(Treasure("gold", "G", 25, self.rand.randrange(gameBoardWidth), self.rand.randrange(gameBoardHeight)))
-        self.listOfTreasures.append(Treasure("platinum", "P", 50, self.rand.randrange(gameBoardWidth), self.rand.randrange(gameBoardHeight)))
-        self.listOfTreasures.append(Treasure("diamond", "D", 40, self.rand.randrange(gameBoardWidth), self.rand.randrange(gameBoardHeight)))
-        self.listOfTreasures.append(Treasure("emerald", "E", 35, self.rand.randrange(gameBoardWidth), self.rand.randrange(gameBoardHeight)))
+        while True:
+                w = self.rand.randrange(gameBoardWidth)
+                h = self.rand.randrange(gameBoardHeight)
+                if self.is_position_empty(w, h):
+                    self.listOfTreasures.append(Treasure("silver", "S", 20, w, h))
+                    break
 
-        self.listOfWeapons.append(Weapon("gun", self.rand.randrange(gameBoardWidth), self.rand.randrange(gameBoardHeight), "/", 7))
-        self.listOfWeapons.append(Weapon("grenade", self.rand.randrange(gameBoardWidth), self.rand.randrange(gameBoardHeight), "o", 4))
+        while True:
+                w = self.rand.randrange(gameBoardWidth)
+                h = self.rand.randrange(gameBoardHeight)
+                if self.is_position_empty(w, h):
+                    self.listOfTreasures.append(Treasure("gold", "G", 25, w, h))
+                    break
+
+        while True:
+                w = self.rand.randrange(gameBoardWidth)
+                h = self.rand.randrange(gameBoardHeight)
+                if self.is_position_empty(w, h):
+                    self.listOfTreasures.append(Treasure("platinum", "P", 50, w, h))
+                    break
+
+        while True:
+                w = self.rand.randrange(gameBoardWidth)
+                h = self.rand.randrange(gameBoardHeight)
+                if self.is_position_empty(w, h):
+                    self.listOfTreasures.append(Treasure("diamond", "D", 40, w, h))
+                    break
+
+        while True:
+                w = self.rand.randrange(gameBoardWidth)
+                h = self.rand.randrange(gameBoardHeight)
+                if self.is_position_empty(w, h):
+                    self.listOfTreasures.append(Treasure("emerald", "E", 35, w, h))
+                    break
+
+        while True:
+                  w = self.rand.randrange(gameBoardWidth)
+                  h = self.rand.randrange(gameBoardHeight)
+                  if self.is_position_empty(w, h):
+                      self.listOfWeapons.append(Weapon("gun", w, h, "/", 5))
+                      break
+
+        while True:
+                w = self.rand.randrange(gameBoardWidth)
+                h = self.rand.randrange(gameBoardHeight)
+                if self.is_position_empty(w, h):
+                    self.listOfWeapons.append(Weapon("grenade", w, h, "o", 3))
+                    break
 
     def play(self):
         self.printInstructions()
@@ -60,11 +104,20 @@ class Game:
         
         loop = 0 
         highest = 0
-        for i in self.listOfPlayers:
-          if i.getPoints() > self.listOfPlayers[highest].getPoints():
-            highest = loop
-          loop += 1
-        print("Player", self.listOfPlayers[highest].gameBoardSymbol, "wins!")
+        
+
+    
+    def is_position_empty(self, x, y):
+        for player in self.listOfPlayers:
+            if player.x == x and player.y == y:
+                return False
+        for treasure in self.listOfTreasures:
+            if treasure.x == x and treasure.y == y:
+                return False
+        for weapon in self.listOfWeapons:
+            if weapon.x == x and weapon.y == y:
+                return False
+        return True
  
         
         
@@ -75,11 +128,14 @@ class Game:
             distance = int(input("How Far? "))
             plyr.move(direction,distance)
 
+
+            # Check for player elimination
             for player in self.listOfPlayers:
               if plyr != player:
                if plyr.x == player.x and plyr.y == player.y:
                 self.listOfPlayers.remove(player)
                 print("You eliminated player", player.gameBoardSymbol ,"from the game!")
+
             for weapon in self.listOfWeapons:
               if plyr.x == weapon.x and plyr.y == weapon.y:
                 plyr.collectWeapon(weapon)
@@ -96,23 +152,38 @@ class Game:
                     self.listOfTreasures.remove(treasure)  # remove the treasure from the list of available treasures
                     break
         elif action == "a":
-          highest = 0
-          loop = 0
-          for weapons in self.listOfWeapons:
-            if weapons.strikedistance > self.listOfWeapons[highest].strikedistance:
-              highest = loop
-            loop += 1
-          
-          for player in self.listOfPlayers:
-            if plyr != player:
-             if ((plyr.x-player.x)**2 + (plyr.y-player.y)**2)**.5 < self.listOfWeapons[highest].strikedistance:
+            # Determine the weapon with the greatest strike distance
+            highest_strike_weapon = max(self.listOfWeapons, key=lambda weapon: weapon.strikedistance)
+            
+            # Check for player elimination within strike distance
+            eliminated_players = []
+            for player in list(self.listOfPlayers):
+                if plyr != player:
+                    distance = ((plyr.x - player.x) ** 2 + (plyr.y - player.y) ** 2) ** 0.5
+                    if distance < highest_strike_weapon.strikedistance:
+                        eliminated_players.append(player)
+            
+            for player in eliminated_players:
                 self.listOfPlayers.remove(player)
-                print("You eliminated player",player.gameBoardSymbol,"from the game!")
+                print(f"You eliminated player {player.gameBoardSymbol} from the game!")
          
         elif action == "r":
           plyr.energy += 4.0
         else :
             print("Sorry, that is not a valid choice")
+
+        # Check if the game should continue
+        if len(self.listOfPlayers) < 2 or len(self.listOfTreasures) == 0:
+            self.end_game()
+        else:
+            # Update the current player index to the next valid player
+            currentPlayerNum = self.listOfPlayers.index(plyr)
+            currentPlayerNum = (currentPlayerNum + 1) % len(self.listOfPlayers)
+            self.currentPlayer = self.listOfPlayers[currentPlayerNum]
+
+
+            # Re-render the game board to update the highlighting effect
+            self.drawUpdatedGameBoard()
     
     
     
@@ -148,3 +219,18 @@ class Game:
         for treasure in self.listOfTreasures :
             print( "   " + treasure.name + "(" + treasure.gameBoardSymbol + ") " + str(treasure.pointValue) )
         print()
+
+
+    def end_game(self):
+        if len(self.listOfPlayers) == 1:
+            winner = self.listOfPlayers[0]
+            print(f"Player {winner.gameBoardSymbol} wins with {winner.getPoints()} points!")
+            return winner
+        else:
+            highest = 0
+            for i in range(len(self.listOfPlayers)):
+                if self.listOfPlayers[i].getPoints() > self.listOfPlayers[highest].getPoints():
+                    highest = i
+            winner = self.listOfPlayers[highest]
+            print(f"Player {winner.gameBoardSymbol} wins with {winner.getPoints()} points!")
+            return winner
