@@ -231,6 +231,8 @@ def game_state():
     })
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        rand.setSeed(int(sys.argv[1]))
     app.run(debug=True, port=5001)
 
 
