@@ -231,9 +231,14 @@ def game_state():
     })
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        rand.setSeed(int(sys.argv[1]))
-    app.run(debug=True, port=5001)
+    seed_value = os.getenv("SEED_VALUE", "42")  # Use an environment variable or default value
+    try:
+        seed_value = int(seed_value)  # Convert seed value to an integer
+    except ValueError:
+        seed_value = 42  # Fallback to a default value if conversion fails
+
+    rand.setSeed(seed_value)  # Ensure `rand.setSeed()` can handle integer values
+    app.run(host="0.0.0.0", port=8000)
 
 
 
