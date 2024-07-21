@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from game import Game
 from randomNum import Random
+import os
 import sys
 
 app = Flask(__name__)
