@@ -30,6 +30,6 @@ Adventure Battle Game is a full-stack application that provides a dynamic and in
 
 ### Running the Game
 
-1. Open your web browser and go to nicoucf.pythonanywhere.com
+1. Open your web browser and go to [Adventure Battle](nicoucf.pythonanywhere.com/)
 2. Start a new game by entering the game board dimensions and the number of players.
 3. Follow the on-screen instructions to move your player and collect treasures.
