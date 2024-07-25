@@ -29,6 +29,11 @@ document.querySelector(".start-button").addEventListener("click", (event) => {
     return;
   }
 
+  if (numPlayersValue < 2 || numPlayersValue > 4) {
+    alert("The number of players must be 2, 3, or 4.");
+    return;
+  }
+
   // Prepare the data to send to the backend
   const gameSettings = {
     width: widthValue,
